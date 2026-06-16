@@ -170,23 +170,29 @@ h3,
 h4 {
   margin: 0;
   color: var(--heading);
-  line-height: 1.05;
+  line-height: 1.08;
   font-family: "Baskerville", "Iowan Old Style", "Palatino Linotype", serif;
   font-weight: 500;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 h1 {
-  font-size: clamp(3rem, 7vw, 6.4rem);
-  letter-spacing: -0.04em;
+  font-size: clamp(2.6rem, 5.6vw, 5.2rem);
+  line-height: 1.03;
+  letter-spacing: -0.035em;
 }
 
 h2 {
-  font-size: clamp(2.15rem, 4.2vw, 4.25rem);
-  letter-spacing: -0.04em;
+  font-size: clamp(1.95rem, 3.6vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
 }
 
 h3 {
-  font-size: clamp(1.45rem, 2.3vw, 2rem);
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  line-height: 1.14;
 }
 
 p {
@@ -404,7 +410,7 @@ p {
   display: grid;
   align-items: center;
   gap: clamp(2rem, 4vw, 4rem);
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
 }
 
 .hero__copy {
@@ -539,6 +545,16 @@ p {
   align-items: center;
 }
 
+.hero > *,
+.split-grid > *,
+.about-grid > *,
+.contact-layout > *,
+.legal-layout > *,
+.page-hero__grid > *,
+.cta-panel__inner > * {
+  min-width: 0;
+}
+
 .surface-panel {
   padding: clamp(1.2rem, 3vw, 2rem);
   border-radius: var(--radius-lg);
@@ -566,6 +582,23 @@ p {
 .surface-panel--dark li,
 .surface-panel--dark strong {
   color: rgba(255, 255, 255, 0.76);
+}
+
+.surface-panel--dark .story-card,
+.surface-panel--dark .price-card {
+  color: var(--text);
+}
+
+.surface-panel--dark .story-card h3,
+.surface-panel--dark .story-card p,
+.surface-panel--dark .story-card .small,
+.surface-panel--dark .price-card h3,
+.surface-panel--dark .price-card p,
+.surface-panel--dark .price-card .small,
+.surface-panel--dark .price-card .price-row,
+.surface-panel--dark .price-card .price-row span,
+.surface-panel--dark .price-card .price-row strong {
+  color: inherit;
 }
 
 .feature-grid,
@@ -620,6 +653,9 @@ p {
   background: var(--card);
   border: 1px solid rgba(71, 52, 48, 0.1);
   box-shadow: 0 18px 44px rgba(36, 28, 28, 0.06);
+  min-width: 0;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 .card h3,
@@ -820,6 +856,25 @@ p {
   padding: 0;
 }
 
+.gallery-teaser {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.gallery-teaser .gallery-item {
+  aspect-ratio: 4 / 3;
+}
+
+.gallery-teaser .gallery-item:nth-child(n) {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.gallery-teaser .gallery-item__button,
+.gallery-teaser .gallery-item__media {
+  height: 100%;
+}
+
 .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 4; }
 .gallery-item:nth-child(2) { grid-column: span 3; grid-row: span 3; }
 .gallery-item:nth-child(3) { grid-column: span 4; grid-row: span 5; }
@@ -874,6 +929,7 @@ p {
 
 .page-hero__grid {
   align-items: stretch;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
 }
 
 .page-hero__copy {
@@ -891,6 +947,18 @@ p {
 .price-card {
   display: grid;
   gap: 1rem;
+}
+
+.surface-panel .price-cards {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.surface-panel .price-card--featured {
+  transform: none;
+}
+
+.split-grid > .service-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .price-card--featured {
@@ -1060,6 +1128,11 @@ textarea {
 
 .cta-panel {
   padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  width: 100%;
+  margin-inline: 0;
+  background: linear-gradient(140deg, rgba(36, 28, 28, 0.96), rgba(80, 63, 60, 0.9));
+  color: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 32px 80px rgba(36, 28, 28, 0.16);
 }
 
 .cta-panel__inner {
@@ -1067,11 +1140,12 @@ textarea {
   gap: 1.25rem;
   align-items: center;
   grid-template-columns: minmax(0, 1.1fr) auto;
-  padding: clamp(1.6rem, 4vw, 2.5rem);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(140deg, rgba(36, 28, 28, 0.96), rgba(80, 63, 60, 0.9));
-  color: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 32px 80px rgba(36, 28, 28, 0.16);
+  width: var(--container);
+  margin-inline: auto;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .cta-panel__inner h2,
@@ -1374,11 +1448,15 @@ textarea {
   }
 
   h1 {
-    font-size: clamp(2.6rem, 14vw, 4rem);
+    font-size: clamp(2.2rem, 11vw, 3.2rem);
   }
 
   h2 {
-    font-size: clamp(2rem, 10vw, 3rem);
+    font-size: clamp(1.75rem, 8.5vw, 2.5rem);
+  }
+
+  h3 {
+    font-size: clamp(1.15rem, 5.4vw, 1.5rem);
   }
 
   .hero-card {
@@ -1431,4 +1509,9 @@ textarea {
     opacity: 1;
     transform: none;
   }
+}
+
+.cta-panel {
+  width: 100%;
+  margin-inline: 0;
 }
