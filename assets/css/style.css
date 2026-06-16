@@ -410,24 +410,17 @@ p {
   display: grid;
   align-items: center;
   gap: clamp(2rem, 4vw, 4rem);
-  grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+  grid-template-columns: minmax(320px, 0.78fr) minmax(440px, 1.22fr);
 }
 
 .hero__copy {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.25rem;
   position: relative;
 }
 
 .hero__copy::before {
-  content: "Maison Aveline";
-  position: absolute;
-  top: -1.5rem;
-  left: 0;
-  font-size: clamp(4rem, 12vw, 9rem);
-  color: rgba(71, 52, 48, 0.05);
-  font-family: "Baskerville", serif;
-  pointer-events: none;
+  content: none;
 }
 
 .hero__lede {
@@ -466,13 +459,13 @@ p {
 .hero__visual {
   position: relative;
   display: grid;
-  justify-items: end;
+  justify-items: stretch;
 }
 
 .hero-card {
   position: relative;
-  width: min(100%, 34rem);
-  padding: 1rem;
+  width: 100%;
+  padding: clamp(0.65rem, 1vw, 0.82rem);
   border-radius: var(--radius-lg);
   background: linear-gradient(180deg, rgba(255, 250, 245, 0.9), rgba(248, 239, 231, 0.84));
   border: 1px solid rgba(71, 52, 48, 0.12);
@@ -485,31 +478,16 @@ p {
   border-radius: calc(var(--radius-lg) - 0.8rem);
 }
 
-.float-card {
-  position: absolute;
-  display: grid;
-  gap: 0.4rem;
-  padding: 1rem 1.1rem;
-  border-radius: 1.2rem;
-  background: rgba(255, 250, 245, 0.92);
-  border: 1px solid rgba(71, 52, 48, 0.12);
-  box-shadow: 0 22px 46px rgba(36, 28, 28, 0.12);
-  max-width: 13rem;
+.hero__copy h1 {
+  max-width: 11ch;
+  font-size: clamp(2.8rem, 4.2vw, 4.35rem);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
 }
 
-.float-card strong {
-  font-size: 1.25rem;
-  color: var(--heading);
-}
-
-.float-card--top {
-  top: -1.75rem;
-  left: -2.5rem;
-}
-
-.float-card--bottom {
-  right: -2rem;
-  bottom: 2rem;
+.hero__copy .lead {
+  max-width: 34rem;
 }
 
 .stats-strip {
@@ -1328,12 +1306,9 @@ textarea {
     justify-items: stretch;
   }
 
-  .float-card--top {
-    left: 1rem;
-  }
-
-  .float-card--bottom {
-    right: 1rem;
+  .hero__copy h1 {
+    max-width: none;
+    font-size: clamp(2.45rem, 4.2vw, 3.55rem);
   }
 
   .gallery-grid {
@@ -1417,8 +1392,7 @@ textarea {
   }
 
   .hero__copy::before {
-    font-size: clamp(3rem, 20vw, 5rem);
-    top: -0.6rem;
+    content: none;
   }
 
   .page-hero__media {
@@ -1465,6 +1439,11 @@ textarea {
     font-size: clamp(2.2rem, 11vw, 3.2rem);
   }
 
+  .hero__copy h1 {
+    font-size: clamp(2.1rem, 10vw, 2.95rem);
+    line-height: 1;
+  }
+
   h2 {
     font-size: clamp(1.75rem, 8.5vw, 2.5rem);
   }
@@ -1475,12 +1454,6 @@ textarea {
 
   .hero-card {
     padding: 0.7rem;
-  }
-
-  .float-card {
-    position: static;
-    max-width: none;
-    margin-top: 1rem;
   }
 
   .hero__visual {
